@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/adev/.local/share/virtualenvs/intern-django-react-thdxBguq/bin/python"
+    "python.pythonPath": "/home/adev/.local/share/virtualenvs/intern-django-react-thdxBguq/bin/python",
+    "python.formatting.provider": "autopep8"
 }
