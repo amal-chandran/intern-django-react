@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormGroup, Label } from "reactstrap";
 import MainLayout from "../mainc/MainLayout";
-import { login } from "./../redux/actions/AuthAction";
+import { login, register } from "./../redux/actions/AuthAction";
 import { connect } from "react-redux";
 
 export default class LoginRegisterPage extends Component {
@@ -118,6 +118,8 @@ class RegisterForm extends Component {
       <Formik
         onSubmit={(values, actions) => {
           console.log(values);
+          this.props.register(values);
+
           actions.setSubmitting(false);
         }}
         initialValues={{ email: "", username: "", password: "" }}
@@ -165,3 +167,10 @@ class RegisterForm extends Component {
     );
   }
 }
+
+RegisterForm = connect(
+  state => ({}),
+  {
+    register
+  }
+)(RegisterForm);

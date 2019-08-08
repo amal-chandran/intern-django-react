@@ -2,7 +2,10 @@ import { put, call, takeLatest } from "redux-saga/effects";
 import {
   LOGIN_AUTH,
   LOGIN_AUTH_SUCCESS,
-  LOGIN_AUTH_FAIL
+  LOGIN_AUTH_FAIL,
+  REGISTER_AUTH,
+  REGISTER_AUTH_SUCCESS,
+  REGISTER_AUTH_FAIL
 } from "./../types/authTypes";
 import { push } from "connected-react-router";
 import { fetchPost } from "./../../helpers/APIHelper";
@@ -17,6 +20,17 @@ function* login(action) {
   }
 }
 
+function* register(action) {
+  try {
+    const data = yield call(fetchPost, "auth/register", action.payload);
+    yield put({ type: REGISTER_AUTH_SUCCESS, payload: data });
+    yield put(push("/admin"));
+  } catch (error) {
+    yield put({ type: REGISTER_AUTH_FAIL, payload: error });
+  }
+}
+
 export default function* rootAuthSaga() {
   yield takeLatest(LOGIN_AUTH, login);
+  yield takeLatest(REGISTER_AUTH, register);
 }
