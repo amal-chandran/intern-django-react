@@ -12,8 +12,8 @@ export default class Router extends Component {
     return (
       <ConnectedRouter history={history}>
         <Switch>
-          <Route path="/auth" exact component={LoginRegisterPage} />
-          <Route path="/admin" exact component={AdminPage} />
+          <Route path="/auth" component={LoginRegisterPage} />
+          <Route path="/admin" component={AdminPage} />
           <Route path="/" exact component={BlogMainPage} />
         </Switch>
       </ConnectedRouter>

@@ -5,7 +5,8 @@ import {
   LOGIN_AUTH_FAIL,
   REGISTER_AUTH,
   REGISTER_AUTH_SUCCESS,
-  REGISTER_AUTH_FAIL
+  REGISTER_AUTH_FAIL,
+  LOGOUT_AUTH
 } from "./../types/authTypes";
 import { push } from "connected-react-router";
 import { fetchPost } from "./../../helpers/APIHelper";
@@ -30,7 +31,15 @@ function* register(action) {
   }
 }
 
+function* logout(action) {
+  try {
+    const data = yield call(fetchPost, "auth/logout", action.payload);
+  } catch (error) {}
+  yield put(push("/"));
+}
+
 export default function* rootAuthSaga() {
   yield takeLatest(LOGIN_AUTH, login);
   yield takeLatest(REGISTER_AUTH, register);
+  yield takeLatest(LOGOUT_AUTH, logout);
 }
