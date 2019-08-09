@@ -1,4 +1,4 @@
-import { LOGIN_AUTH, REGISTER_AUTH, LOGOUT_AUTH } from "./../types/authTypes";
+import { LOGIN_AUTH, REGISTER_AUTH, LOGOUT_AUTH } from "../types/AuthTypes";
 
 export const login = payload => ({
   type: LOGIN_AUTH,

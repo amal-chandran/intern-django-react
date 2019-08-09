@@ -35,17 +35,24 @@ class MainNavBar extends React.Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink className="nav-link" to="/create-post">
-                    Create Blog Post
-                  </NavLink>
-                </NavItem>
                 {this.props.isLogined ? (
-                  <NavItem>
-                    <a className="nav-link" onClick={this.props.logout}>
-                      Logout
-                    </a>
-                  </NavItem>
+                  <>
+                    <NavItem>
+                      <NavLink className="nav-link" to="/create-post">
+                        Create Blog Post
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink exact className="nav-link" to="/admin">
+                        Admin
+                      </NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <a className="nav-link" onClick={this.props.logout}>
+                        Logout
+                      </a>
+                    </NavItem>
+                  </>
                 ) : (
                   <NavItem>
                     <NavLink className="nav-link" to="/auth">

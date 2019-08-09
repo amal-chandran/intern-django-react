@@ -7,7 +7,7 @@ import {
   REGISTER_AUTH_SUCCESS,
   REGISTER_AUTH_FAIL,
   LOGOUT_AUTH
-} from "./../types/authTypes";
+} from "../types/AuthTypes";
 import { push } from "connected-react-router";
 import { fetchPost } from "./../../helpers/APIHelper";
 
@@ -33,7 +33,7 @@ function* register(action) {
 
 function* logout(action) {
   try {
-    const data = yield call(fetchPost, "auth/logout", action.payload);
+    yield call(fetchPost, "auth/logout", action.payload);
   } catch (error) {}
   yield put(push("/"));
 }

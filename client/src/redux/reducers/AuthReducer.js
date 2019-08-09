@@ -3,8 +3,8 @@ import {
   LOGIN_AUTH_FAIL,
   REGISTER_AUTH_SUCCESS,
   REGISTER_AUTH_FAIL,
-  LOGOUT_AUTH
-} from "./../types/authTypes";
+  LOGOUT_AUTH_SUCCESS
+} from "../types/AuthTypes";
 
 const initialState = {
   user: {},
@@ -27,7 +27,7 @@ export default (state = initialState, { type, payload }) => {
     case REGISTER_AUTH_FAIL:
       return { ...state, error: payload, isLogined: false };
 
-    case LOGOUT_AUTH:
+    case LOGOUT_AUTH_SUCCESS:
       return initialState;
 
     default:

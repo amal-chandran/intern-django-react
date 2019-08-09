@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import { FormGroup, Label } from "reactstrap";
 import MainLayout from "../mainc/MainLayout";
 import { login, register } from "./../redux/actions/AuthAction";
@@ -22,16 +22,15 @@ export default class LoginRegisterPage extends Component {
       <MainLayout>
         <div className="border shadow-sm p-4 m-auto w-50 rounded bg-white">
           <h5 className="text-center">
-            {this.state.setForm == "login" ? "Login" : "Register"}
+            {this.state.setForm === "login" ? "Login" : "Register"}
           </h5>
           <div className="p-1">
-            {this.state.setForm == "login" ? (
+            {this.state.setForm === "login" ? (
               <>
                 <LoginForm />
                 <a
                   className="text-center d-block pt-4"
                   onClick={this.toggleForm("register")}
-                  href="#"
                 >
                   New here ? Start Account
                 </a>
@@ -42,7 +41,6 @@ export default class LoginRegisterPage extends Component {
                 <a
                   className="text-center d-block pt-4"
                   onClick={this.toggleForm("login")}
-                  href="#"
                 >
                   Already had account ? Login
                 </a>
