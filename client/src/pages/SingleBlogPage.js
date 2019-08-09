@@ -21,25 +21,31 @@ export class SingleBlogPage extends Component {
     if (postData && postData.id)
       return (
         <MainLayout>
-          <h2>{postData.title}</h2>
-          {this.props.admin || postData.owner === userAuth.id ? (
-            <div>
-              <Link
-                to={"/admin/post/" + postData.id + "/edit"}
-                className="btn btn-primary"
-              >
-                Edit
-              </Link>
-              <button
-                onClick={() => this.props.delete_post(postData.id)}
-                className="btn btn-danger"
-              >
-                Delete
-              </button>
+          <div className="row">
+            <div className="col">
+              <h2>{postData.title}</h2>
             </div>
-          ) : (
-            ""
-          )}
+            <div className="col-2">
+              {this.props.admin || postData.owner === userAuth.id ? (
+                <div>
+                  <Link
+                    to={"/admin/post/" + postData.id + "/edit"}
+                    className="btn mr-2 btn-primary"
+                  >
+                    Edit
+                  </Link>
+                  <button
+                    onClick={() => this.props.delete_post(postData.id)}
+                    className="btn btn-danger"
+                  >
+                    Delete
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
           <time className="text-black-50" time={postData.created_at}>
             <TimeAgo date={postData.created_at} />
           </time>
