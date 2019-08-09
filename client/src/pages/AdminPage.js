@@ -21,7 +21,7 @@ export class AdminPage extends Component {
               <div className="card mb-2">
                 <div className="card-body">
                   <h5>{post["title"]}</h5>
-                  <div>{post["body"]}</div>
+                  <div>{post["body"].slice(0, 100)}</div>
                 </div>
               </div>
             </Link>
