@@ -49,7 +49,11 @@ export class SingleBlogPage extends Component {
     else
       return (
         <MainLayout>
-          <h4>No Post Found</h4>
+          {this.props.loading ? (
+            <div className="alert alert-dark">Loading....</div>
+          ) : (
+            <h4>No Post Found</h4>
+          )}
         </MainLayout>
       );
   }
@@ -58,7 +62,8 @@ export class SingleBlogPage extends Component {
 const mapStateToProps = state => ({
   postData: state.blogPost.postData,
   postDataAll: state.blogPostAll.postData,
-  userAuth: state.auth.user
+  userAuth: state.auth.user,
+  loading: state.blogPostAll.loadingSingle || state.blogPost.loadingSingle
 });
 
 const mapDispatchToProps = { load_post_all, load_post, delete_post };
